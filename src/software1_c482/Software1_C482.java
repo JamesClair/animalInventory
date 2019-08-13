@@ -19,7 +19,7 @@ public class Software1_C482 extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/View/MainMenu.fxml"));
         
         Scene scene = new Scene(root);
         
