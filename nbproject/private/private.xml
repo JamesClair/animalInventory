@@ -3,8 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/james.clair/gitRepos/Software1_C482/src/software1_c482/Software1_C482.java</file>
+            <file>file:/Users/james.clair/gitRepos/Software1_C482/src/View/DisplayAnimalMenu.fxml</file>
+            <file>file:/Users/james.clair/gitRepos/Software1_C482/src/Model/Dog.java</file>
+            <file>file:/Users/james.clair/gitRepos/Software1_C482/src/Controller/DisplayAnimalController.java</file>
             <file>file:/Users/james.clair/gitRepos/Software1_C482/src/View/MainMenu.fxml</file>
+            <file>file:/Users/james.clair/gitRepos/Software1_C482/src/Controller/MainController.java</file>
+            <file>file:/Users/james.clair/gitRepos/Software1_C482/src/Controller/CreateAnimalController.java</file>
+            <file>file:/Users/james.clair/gitRepos/Software1_C482/src/Controller/AnimalDetailsController.java</file>
+            <file>file:/Users/james.clair/gitRepos/Software1_C482/src/Model/Animal.java</file>
+            <file>file:/Users/james.clair/gitRepos/Software1_C482/src/Model/DataProvider.java</file>
         </group>
     </open-files>
 </project-private>
