@@ -62,6 +62,15 @@ public class DisplayAnimalController implements Initializable {
 		stage.show();
         }
 
+	public boolean search(int id){
+		for(Animal dog : DataProvider.getAllAnimals()) {
+			if(dog.getId() == id) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	/**
 	 * Initializes the controller class.
 	 */
@@ -73,6 +82,11 @@ public class DisplayAnimalController implements Initializable {
 		breedCol.setCellValueFactory(new PropertyValueFactory<>("breed"));
 		lifespanCol.setCellValueFactory(new PropertyValueFactory<>("lifespan"));
 		priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+		if(search(44))
+			System.out.println("Match!");
+		else
+			System.out.println("No Match!");
 	}	
 
 	
