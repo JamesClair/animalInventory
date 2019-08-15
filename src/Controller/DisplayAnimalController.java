@@ -7,6 +7,7 @@ package Controller;
 
 import Model.Animal;
 import Model.DataProvider;
+import Model.Dog;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -71,6 +72,28 @@ public class DisplayAnimalController implements Initializable {
 		return false;
 	}
 	
+	public boolean update(int id, Animal animal) {
+		int index = -1;
+
+		for(Animal dog : DataProvider.getAllAnimals()) {
+			index++;
+			if (dog.getId() == id) {
+				DataProvider.getAllAnimals().set(index, animal);
+				return true;
+			}
+			
+		}
+		return false;
+	}
+
+	public boolean delete(int id) {
+		for (Animal dog : DataProvider.getAllAnimals()) {
+			if(dog.getId() == id)
+				return DataProvider.getAllAnimals().remove(dog);
+		}
+		return false;
+	}
+
 	/**
 	 * Initializes the controller class.
 	 */
@@ -83,10 +106,25 @@ public class DisplayAnimalController implements Initializable {
 		lifespanCol.setCellValueFactory(new PropertyValueFactory<>("lifespan"));
 		priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
 
+		/*
 		if(search(44))
 			System.out.println("Match!");
 		else
 			System.out.println("No Match!");
+		
+		if(update(55, new Dog(5, "German Shepherd", 13, "Alert", 1599.99, true, "Gymnast")))
+			System.out.println("Update successful!");
+		else
+			System.out.println("Update failed!");
+
+
+		*/
+
+		if(delete(3))		
+			System.out.println("Deleted!");
+		else
+			System.out.println("No Match!");
+
 	}	
 
 	
