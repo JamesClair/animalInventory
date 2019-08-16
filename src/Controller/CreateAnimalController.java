@@ -62,24 +62,40 @@ public class CreateAnimalController implements Initializable {
 
          @FXML
          void onActionSaveAnimal(ActionEvent event) throws IOException {
-         	int id =  Integer.parseInt(animalIdTxt.getText());
-         	String breed = breedTxt.getText();
-		int lifespan = Integer.parseInt(lifespanTxt.getText());
-         	String behavior = behaviorTxt.getText();
-		double price = Double.parseDouble(priceTxt.getText());
-		boolean isVaccinated = false;
-		String special = null;
-		if(vaccYesRBtn.isSelected())
-			isVaccinated = true;
-
-		DataProvider.addAnimal(new Dog(id, breed, lifespan, behavior, price, isVaccinated, special));
+         	
+		 try {
+			
+			int id =  Integer.parseInt(animalIdTxt.getText());
+         		String breed = breedTxt.getText();
+			int lifespan = Integer.parseInt(lifespanTxt.getText());
+         		String behavior = behaviorTxt.getText();
+			double price = Double.parseDouble(priceTxt.getText());
+			boolean isVaccinated = false;
+			String special = null;
+			if(vaccYesRBtn.isSelected())
+				isVaccinated = true;
+			
+			
+			DataProvider.addAnimal(new Dog(id, breed, lifespan, behavior, price, isVaccinated, special));
 		
-		stage = (Stage)((Button)event.getSource()).getScene().getWindow();
-		scene = FXMLLoader.load(getClass().getResource("/View/MainMenu.fxml"));
-		stage.setScene(new Scene(scene));
-		stage.show();
+			
+			stage = (Stage)((Button)event.getSource()).getScene().getWindow();
+			scene = FXMLLoader.load(getClass().getResource("/View/MainMenu.fxml"));
+			stage.setScene(new Scene(scene));
+			stage.show();
+		}
+		
+		catch(NumberFormatException e) {
+			System.out.println("Please enter valid values in text fields.");
+			System.out.println("Exception: " + e);
+			System.out.println("Exception: " + e.getMessage());
+		}
+		 
+		 
          }
-	 
+	
+
+
 	/**
 	 * Initializes the controller class.
 	 */

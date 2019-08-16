@@ -5,6 +5,8 @@
  */
 package Controller;
 
+import Model.Animal;
+import Model.Dog;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -56,6 +58,23 @@ public class AnimalDetailsController implements Initializable {
 		stage.setScene(new Scene(scene));
 		stage.show();
 	}
+	
+	public void sendAnimal (Animal dog) {
+       		animalIdLbl.setText(String.valueOf(dog.getId()));
+		breedLbl.setText(dog.getBreed());
+		lifespanLbl.setText(String.valueOf(dog.getLifespan()));
+		behaviorLbl.setText(dog.getBehavior());
+		priceLbl.setText(String.valueOf(dog.getPrice()));
+
+		if(dog.isVaccinated())
+			vaccLbl.setText("Yes");
+		else
+			vaccLbl.setText("No");
+
+		if(dog instanceof Dog) {
+			specialLbl.setText(((Dog) dog).getSpecial());
+		}
+}
 	
 	/**
 	 * Initializes the controller class.

@@ -11,6 +11,8 @@ import Model.Dog;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import static javafx.collections.FXCollections.observableList;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -51,17 +53,29 @@ public class DisplayAnimalController implements Initializable {
 
 
         @FXML
-        void onActionDisplayAnimalDetails(ActionEvent event) {
+        void onActionDisplayAnimalDetails(ActionEvent event) throws IOException {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("/View/AnimalDetailsMenu.fxml"));
+		loader.load();
 
+		AnimalDetailsController ADMController = loader.getController();
+		ADMController.sendAnimal(animalTableView.getSelectionModel().getSelectedItem());
+
+		
+		stage = (Stage)((Button)event.getSource()).getScene().getWindow();
+		Parent scene = loader.getRoot();
+		stage.setScene(new Scene(scene));
+		stage.show();
         }
 
         @FXML
         void onActionDisplayMainMenu(ActionEvent event) throws IOException {
-                stage = (Stage)((Button)event.getSource()).getScene().getWindow();
+               
+		stage = (Stage)((Button)event.getSource()).getScene().getWindow();
 		scene = FXMLLoader.load(getClass().getResource("/View/MainMenu.fxml"));
 		stage.setScene(new Scene(scene));
 		stage.show();
-        }
+	}
 
 	public boolean search(int id){
 		for(Animal dog : DataProvider.getAllAnimals()) {
@@ -93,7 +107,29 @@ public class DisplayAnimalController implements Initializable {
 		}
 		return false;
 	}
+	public Animal selectAnimal(int id) {
+		for(Animal dog :DataProvider.getAllAnimals()) {
+			if(dog.getId() == id)
+				return dog;
+		}
+		return null;
+	}
 
+	public ObservableList<Animal> filter(String breed) {
+		if (!(DataProvider.getAllFilteredAnimals().isEmpty()))
+			DataProvider.getAllFilteredAnimals().clear();
+
+		for(Animal dog : DataProvider.getAllAnimals()) {
+			if(dog.getBreed().contains(breed))	
+				DataProvider.getAllFilteredAnimals().add(dog);
+		}
+
+		if(DataProvider.getAllFilteredAnimals().isEmpty())
+			return DataProvider.getAllAnimals();
+		else
+			return DataProvider.getAllFilteredAnimals();
+
+	}
 	/**
 	 * Initializes the controller class.
 	 */
@@ -101,10 +137,12 @@ public class DisplayAnimalController implements Initializable {
 	public void initialize(URL url, ResourceBundle rb) {
 		// TODO
 		animalTableView.setItems(DataProvider.getAllAnimals());
+		//animalTableView.setItems(filter("Al"));
 		animalIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
 		breedCol.setCellValueFactory(new PropertyValueFactory<>("breed"));
 		lifespanCol.setCellValueFactory(new PropertyValueFactory<>("lifespan"));
 		priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+
 
 		/*
 		if(search(44))
@@ -118,13 +156,15 @@ public class DisplayAnimalController implements Initializable {
 			System.out.println("Update failed!");
 
 
-		*/
 
 		if(delete(3))		
 			System.out.println("Deleted!");
 		else
 			System.out.println("No Match!");
 
+		*/
+
+		//animalTableView.getSelectionModel().select(selectAnimal(5));
 	}	
 
 	
