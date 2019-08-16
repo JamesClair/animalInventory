@@ -1,5 +1,5 @@
 # animalInventory
-This app was created while I was learning JavaFX and provides a simple form style interface for viewing and manipulating animal data.  This repo would be useful as a template or to help develop a better understanding of JavaFX development.
+This app was created while I was learning JavaFX from a webinar series from WGU and provides a simple form style interface for viewing and manipulating sample(animal) data.  This repo would be useful as a template or to help develop a better understanding of JavaFX development.
 
 
 ### UML Diagram
