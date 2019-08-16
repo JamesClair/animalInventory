@@ -9,6 +9,7 @@ import Model.DataProvider;
 import Model.Dog;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,6 +19,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -55,10 +57,17 @@ public class CreateAnimalController implements Initializable {
 
          @FXML
          void onActionDisplayMainMenu(ActionEvent event) throws IOException {
-                stage = (Stage)((Button)event.getSource()).getScene().getWindow();
-		scene = FXMLLoader.load(getClass().getResource("/View/MainMenu.fxml"));
-		stage.setScene(new Scene(scene));
-		stage.show();
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "This will clear text fields, do you want to continue?");				
+		
+		Optional<ButtonType> result =  alert.showAndWait();
+		
+		if(result.get() == ButtonType.OK) {
+			stage = (Stage)((Button)event.getSource()).getScene().getWindow();
+			scene = FXMLLoader.load(getClass().getResource("/View/MainMenu.fxml"));
+			stage.setScene(new Scene(scene));
+			stage.show();
+		}
+		
          }
 
          @FXML
@@ -87,8 +96,8 @@ public class CreateAnimalController implements Initializable {
 		}
 		
 		catch(NumberFormatException e) {
-			Alert alert = new Alert(Alert.AlertType.ERROR);				
-			alert.setTitle("Error Dialog");
+			Alert alert = new Alert(Alert.AlertType.WARNING);				
+			alert.setTitle("Warning Dialog");
 			alert.setContentText("Please enter a valid value for each field!");
 			alert.showAndWait();
 		}
