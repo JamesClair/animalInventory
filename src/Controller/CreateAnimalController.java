@@ -16,6 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -86,9 +87,10 @@ public class CreateAnimalController implements Initializable {
 		}
 		
 		catch(NumberFormatException e) {
-			System.out.println("Please enter valid values in text fields.");
-			System.out.println("Exception: " + e);
-			System.out.println("Exception: " + e.getMessage());
+			Alert alert = new Alert(Alert.AlertType.ERROR);				
+			alert.setTitle("Error Dialog");
+			alert.setContentText("Please enter a valid value for each field!");
+			alert.showAndWait();
 		}
 		 
 		 
