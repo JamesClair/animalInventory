@@ -7,5 +7,9 @@ This app was created while I was learning JavaFX from a webinar series from WGU 
 ![Image of UML Diagram](https://trello-attachments.s3.amazonaws.com/5d192ca998e55f4f79dc0176/864x398/4a461acbfd13ba8e95d134e96e8f10a3/image.png)
 
 ### TODO:
-- finish readme
+- Design
+- Features
+- Usage
+- Support
+- Acknowledgements
 - UI images and user guide
